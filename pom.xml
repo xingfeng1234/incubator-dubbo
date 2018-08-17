@@ -614,6 +614,23 @@
                     <artifactId>jetty-maven-plugin</artifactId>
                     <version>${maven_jetty_version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>1.1.1</version>
+                    <configuration>
+                        <imageName>dubbo</imageName>
+                        <!-- Dockerfile路径 -->
+                        <dockerDirectory>${project.basedir}/docker</dockerDirectory>
+                        <resources>
+                            <resource>
+                                <targetPath>/</targetPath>
+                                <directory>${project.build.directory}</directory>
+                                <include>dubbo.war</include>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
